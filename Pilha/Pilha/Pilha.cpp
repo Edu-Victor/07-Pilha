@@ -49,7 +49,7 @@ void menu()
 		case 3: pop();
 			break;
 		case 4: exibirElemento();
-			return;
+			break;
 		case 5:
 			return;
 		default:
@@ -97,24 +97,33 @@ void push()
 void pop()
 {
 
+	if (topo == NULL) {
+		cout << "Lista Vazia." << endl;
+	}
+	else {
+		NO* apagar = topo;
+
+		topo = topo->prox;
+
+		free(apagar);
+	}
 	
-	NO* apagar = topo;
-
-	topo = topo->prox;
-
-	free(apagar);
 
 }
 
 
 void exibirElemento() {
 
-
-	cout << "Elementos: \n";
-	NO* aux = topo;
-	while (aux != NULL) {
-		cout << aux->valor << endl;
-		aux = aux->prox;
+	if (topo == NULL) {
+		cout << "Lista Vazia." << endl;
+	}
+	else {
+		cout << "Elementos: \n";
+		NO* aux = topo;
+		while (aux != NULL) {
+			cout << aux->valor << endl;
+			aux = aux->prox;
+		}
 	}
 
 }
