@@ -26,7 +26,7 @@ int main()
 void menu()
 {
 	int op = 0;
-	while (op != 4) {
+	while (op != 5) {
 		system("cls"); // somente no windows
 		cout << "Menu Pilha";
 		cout << endl << endl;
@@ -105,7 +105,9 @@ void pop()
 
 		topo = topo->prox;
 
+		cout << "O elemento " << apagar->valor << " foi removido." << endl;
 		free(apagar);
+
 	}
 	
 
