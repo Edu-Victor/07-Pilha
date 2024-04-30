@@ -14,6 +14,7 @@ void menu();
 void inicializar();
 void pop();
 void push();
+void exibirElemento();
 //--------------------------
 
 
@@ -32,7 +33,8 @@ void menu()
 		cout << "1 - Inicializar Pilha \n";
 		cout << "2 - Inserir elemento (Push) \n";
 		cout << "3 - Remover elementos (Pop) \n";
-		cout << "4 - Sair \n";
+		cout << "4 - exibir elementos \n";
+		cout << "5 - Sair \n";
 
 
 		cout << "Opcao: ";
@@ -46,7 +48,9 @@ void menu()
 			break;
 		case 3: pop();
 			break;
-		case 4:
+		case 4: exibirElemento();
+			return;
+		case 5:
 			return;
 		default:
 			break;
@@ -59,7 +63,7 @@ void menu()
 void inicializar()
 {
 
-	// se a lista já possuir elementos
+	// se a lista jÃ¡ possuir elementos
 	// libera a memoria ocupada
 	NO* aux = topo;
 	while (aux != NULL) {
@@ -85,8 +89,8 @@ void push()
 
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
-	novo->prox = NULL;
-
+	novo->prox = topo;
+	topo = novo;
 
 }
 
@@ -94,6 +98,23 @@ void pop()
 {
 
 	
+	NO* apagar = topo;
+
+	topo = topo->prox;
+
+	free(apagar);
 
 }
 
+
+void exibirElemento() {
+
+
+	cout << "Elementos: \n";
+	NO* aux = topo;
+	while (aux != NULL) {
+		cout << aux->valor << endl;
+		aux = aux->prox;
+	}
+
+}
